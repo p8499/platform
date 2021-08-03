@@ -1,0 +1,34 @@
+server:
+  port: 8111
+spring:
+  application:
+    name: s1
+  datasource:
+    url: jdbc:oracle:thin:@192.168.100.43:1521:salesdv
+    username: username
+    password: password
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    database: oracle
+    #    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+  rabbitmq:
+    host: 192.168.100.44
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm-type: correlated
+    publisher-returns: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka/
